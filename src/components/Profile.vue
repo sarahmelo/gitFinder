@@ -14,10 +14,12 @@
                         Seguindo: <span class="badge badge"> {{ user.following }}</span>
                     </li>
                 </ul>
-                <div class="card-body">
+            </div>
+
+            <div class="card-body">
                     <a :href="user.html_url" class="btn btn-primary">Ver Perfil</a>
                 </div>
-            </div>
+
         </div>
     </div>
 </template>
@@ -31,37 +33,38 @@ export default {
 <style>
 
 div.card {
+    
+    width: 320px;
+    padding: 30px;
     border: none;
-    width: 240px;
-
-
+    border-radius: 0;
+    background: #2b2d33;
     display: flex;
+    flex-direction: inherit;
     align-items: center;
-
-    background: #0F1C28;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.4);
-    border-radius: 3px;
 }
 
 img.card-img-top {
     width: 30%;
     border-radius: 50%;
+    margin-left: inherit;
 }
 
 li.list-group-item {
-    font-size: smaller;
-    align-items: center;
+   
+    font-size: smaller; 
     display: flex;
     border: none;
     padding: 0;
     background-color: transparent;
     margin-top: revert;
-
-
+    margin-left: 20%;
+    align-items: center;
     color: white;
 }
 
 #text {
+    
     font-size: smaller;
     align-items: center;
     display: flex;
@@ -74,13 +77,24 @@ span.badge.badge {
     width: 20px;
     align-items: center;
     display: flex;
-    background-color: #FC5520;
     margin-left: 10px;
 }
 
 div.card.card-body {
+   
     width: auto;
     padding: 8px;
+}
+
+div.card-body {
+    
+    place-content: center;
+    background-color: #010508;
+    width: 320px;
+    display: flex;
+    height: 64px;
+    padding: 8px;
+    align-items: center;
 }
 
 </style>
