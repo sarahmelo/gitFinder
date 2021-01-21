@@ -17,7 +17,7 @@
             </div>
 
             <div class="card-body">
-                    <a :href="user.html_url" class="btn btn-primary">Ver Perfil</a>
+                    <a :href="user.html_url" class="btn">Ver Perfil</a>
                 </div>
 
         </div>
@@ -32,13 +32,20 @@ export default {
 
 <style>
 
+a.btn {
+    background-color: #cecece;
+    color: #1F1F1F;
+    border-radius: 1rem;
+}
+
+
 div.card {
     
     width: 320px;
     padding: 30px;
     border: none;
-    border-radius: 0;
-    background: #2b2d33;
+    border-radius: 15px 15px 0 0;
+    background: #404040;
     display: flex;
     flex-direction: inherit;
     align-items: center;
@@ -89,7 +96,7 @@ div.card.card-body {
 div.card-body {
     
     place-content: center;
-    background-color: #010508;
+    background-color: #080808;
     width: 320px;
     display: flex;
     height: 64px;

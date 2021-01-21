@@ -46,6 +46,7 @@ div.col-md-8 {
     
     max-width: 320px;
     height: 175;
+    background-color: #080808;
 }
 
 a:link {
@@ -60,6 +61,27 @@ a:visited {
     
     color: white;
     text-decoration: none;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  border: none;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #cecece;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #4d6880;
 }
 
 </style>

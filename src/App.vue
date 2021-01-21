@@ -77,12 +77,8 @@ export default {
 
 h5 {
   
-  color: #98ade8;
+  color:#1F1F1F;
   font-family: 'Poppins', sans-serif;
-}
-
-svg {
-  background-color:
 }
 
 div#app{
@@ -93,7 +89,7 @@ div#app{
   font-family: 'Open Sans', sans-serif;
   font-size: x-small;
 
-  background: #191c1f;
+  background: #CECECE;
   display: grid;
   align-items: center;
   place-content: center;
@@ -109,25 +105,26 @@ div.container {
   height: max-content;
 }
 
-input#search.form-control, input:focus {
+input#search.form-control {
   
   width: auto;
-  height: 30px;
-  font-size: x-small;
+  height: 24px;
+  font-size: smaller;
   font-family: 'Open Sans', sans-serif;
-  color: #e8e8e8;
+  color: #1F1F1F;
 
   background-color: transparent;
-  border-radius: 10px;
-  border-color: #98ade8;
+  border-radius: 1rem;
+  border-color: #1F1F1F;
+  
 }
 
 div.col-md-8 {
   
   width: 320px;
   height: 170px;
-  background: #010508;
-  /* content-visibility: auto; */
+  background: #080808;
+  border-radius: 0 0 15px 15px;
   overflow: auto;
 }
 
