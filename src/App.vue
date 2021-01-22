@@ -14,7 +14,7 @@
         <div class="col-md-4">
           <Profile :user="user"/>
           <div class="col-md-8">
-          <Repo v-for="repo in repos" :key="repo" :repo="repo"/>
+          <Repo v-for="repo in repos" :repo="repo"/>
         </div>
         </div>
         
