@@ -52,6 +52,7 @@ export default {
   methods: {
   
 
+    
     getUser(e) {
       const user = e.target.value;
       const { url, client_id, client_secret, count, sort} = this.github;

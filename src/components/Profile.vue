@@ -33,7 +33,7 @@ export default {
 <style>
 
 a.btn {
-    background-color: #cecece;
+    background-color: #676767;
     color: #1F1F1F;
     border-radius: 1rem;
 }
@@ -45,7 +45,10 @@ div.card {
     padding: 30px;
     border: none;
     border-radius: 15px 15px 0 0;
-    background: #404040;
+    background-image: url('../assets/wallpaper.jpg');
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+    /* #404040 */
     display: flex;
     flex-direction: inherit;
     align-items: center;
