@@ -8,7 +8,7 @@
             </svg> GitFinder
         </h5>
         <!-- <p class="lead">Digite um nome para encontrar usuários e repositórios</p> -->
-        <input @keyup="getUser" type="text" id="search" class="form-control" placeholder="search" required>
+        <input @keyup="handleKeyUp" type="text" id="search" class="form-control" placeholder="search" required>
       </div>
       <div class="row mt-3" v-if="user.length !== 0">
         <div class="col-md-4">
@@ -50,28 +50,50 @@ export default {
     };
   },
   methods: {
-  
 
-    
-    getUser(e) {
-      const user = e.target.value;
-      const { url, client_id, client_secret, count, sort} = this.github;
+    handleKeyUp(e) {
 
-        axios
-          .get(`${url}/${user}?client_id=${client_id}&client_secret=${client_secret}`)
-          
-            .then(({data}) => this.user = data);
-
-        axios
-          .get(`${url}/${user}/repos?per_page=${count}&sort=${sort}&client_id=${client_id}
-          &client_secret=${client_secret}`)
-            
-            .then(( {data} ) => (this.repos = data));
-
+      setTimeout(() => {
       
+        const user = e.target.value;
+        const { url, client_id, client_secret, count, sort} = this.github;
+
+          axios
+            .get(`${url}/${user}?client_id=${client_id}&client_secret=${client_secret}`)
+              .then(({data}) => this.user = data);
+
+          axios
+            .get(`${url}/${user}/repos?per_page=${count}&sort=${sort}&client_id=${client_id}
+            &client_secret=${client_secret}`)
+              
+              .then(( {data} ) => (this.repos = data)); 
+    
+      }, 2000)
+
     }
   }
 }
+
+
+
+
+
+// getUser(e) {
+//       const user = e.target.value;
+//       const { url, client_id, client_secret, count, sort} = this.github;
+
+//         axios
+//           .get(`${url}/${user}?client_id=${client_id}&client_secret=${client_secret}`)
+//             .then(({data}) => this.user = data);
+
+//         axios
+//           .get(`${url}/${user}/repos?per_page=${count}&sort=${sort}&client_id=${client_id}
+//           &client_secret=${client_secret}`)
+            
+//             .then(( {data} ) => (this.repos = data));
+
+      
+//     }
 </script>
 
 <style>
@@ -145,3 +167,5 @@ div.row.mt-3 {
 }
 
 </style>
+
+
