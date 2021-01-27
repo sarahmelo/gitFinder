@@ -45,15 +45,24 @@ export default {
         count: '7',
         sort: 'created asc'
       },
+      time: {
+        time: null
+      },
         user: [],
         repos: []
+      
     };
   },
   methods: {
 
+    
+    
+    
     handleKeyUp(e) {
 
-      setTimeout(() => {
+      clearTimeout(this.time)
+
+      this.time = setTimeout(() => {
       
         const user = e.target.value;
         const { url, client_id, client_secret, count, sort} = this.github;
