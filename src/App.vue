@@ -8,16 +8,15 @@
             </svg> GitFinder
         </h5>
         <!-- <p class="lead">Digite um nome para encontrar usuários e repositórios</p> -->
-        <input @keyup="handleKeyUp" type="text" id="search" class="form-control" placeholder="search" required>
+        <input v-model="search" @keyup="handleKeyUp" type="text" id="search" class="form-control" placeholder="search" required>
       </div>
       <div class="row mt-3" v-if="user.length !== 0">
         <div class="col-md-4">
           <Profile :user="user"/>
           <div class="col-md-8">
-          <Repo v-for="repo in repos" :repo="repo"/>
+          <Repo v-for="repo in repos" :repo="repo" :key="repo.id"/>
         </div>
         </div>
-        
       
     </div>  
   </div>
@@ -25,7 +24,6 @@
 
 <script>
 
-// import github from 'github.svg';
 import axios from 'axios';
 import Profile from './components/Profile.vue';
 import Repo from './components/Repo'
@@ -45,64 +43,69 @@ export default {
         count: '7',
         sort: 'created asc'
       },
-      time: {
-        time: null
-      },
         user: [],
-        repos: []
+        repos: [],
+        search: ''
       
     };
   },
   methods: {
 
-    
-    
-    
-    handleKeyUp(e) {
+    // debounce(func, wait) {
 
-      clearTimeout(this.time)
+    //   console.log(func)
 
-      this.time = setTimeout(() => {
+    //   let timer;
+    //   return function () {
+    //       console.log('ooi')
+    //       clearTimeout(timer);
+    //       console.log(timer)
+    //       timer = setTimeout(func, wait);
+    //       console.log(timer)
+    //   }
+    // },
+
+    handleKeyUp() {
+      this.debounce(this.makeRequest,2000)
+    },
+
+
+    debounce (fn, delay) {
+    
+    console.log('chamado')
+    var timeoutID = null
+    return function () {
+
+      console.log('hi')
+      clearTimeout(timeoutID)
+      var args = arguments
+      var that = this
+      timeoutID = setTimeout(function () {
+        fn.apply(that, args)
+      }, delay)
+    }
+  },
+
+    makeRequest() {
       
-        const user = e.target.value;
+      console.log('oi')
         const { url, client_id, client_secret, count, sort} = this.github;
 
           axios
-            .get(`${url}/${user}?client_id=${client_id}&client_secret=${client_secret}`)
+            .get(`${url}/${this.search}?client_id=${client_id}&client_secret=${client_secret}`)
               .then(({data}) => this.user = data);
+              // console.log(this.search)
 
           axios
-            .get(`${url}/${user}/repos?per_page=${count}&sort=${sort}&client_id=${client_id}
+            .get(`${url}/${this.search}/repos?per_page=${count}&sort=${sort}&client_id=${client_id}
             &client_secret=${client_secret}`)
               
               .then(( {data} ) => (this.repos = data)); 
-    
-      }, 2000)
 
     }
   }
 }
 
-
-
-
-
-// getUser(e) {
-//       const user = e.target.value;
-//       const { url, client_id, client_secret, count, sort} = this.github;
-
-//         axios
-//           .get(`${url}/${user}?client_id=${client_id}&client_secret=${client_secret}`)
-//             .then(({data}) => this.user = data);
-
-//         axios
-//           .get(`${url}/${user}/repos?per_page=${count}&sort=${sort}&client_id=${client_id}
-//           &client_secret=${client_secret}`)
-            
-//             .then(( {data} ) => (this.repos = data));
-
-      
-//     }
 </script>
 
 <style>
