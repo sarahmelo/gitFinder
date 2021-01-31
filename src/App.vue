@@ -14,7 +14,7 @@
         <div class="col-md-4">
           <Profile :user="user"/>
           <div class="col-md-8">
-          <Repo v-for="repo in repos" :repo="repo" :key="repo.id"/>
+          <Repo v-for="repo in repos" :repo="repo" :key="repo.id"/> <!-- repo.id irá guardar/identificar usuários pelo seu id git  -->
         </div>
         </div>
       
@@ -45,57 +45,30 @@ export default {
       },
         user: [],
         repos: [],
-        search: ''
+        search: '' // search -> armazenar o value do input
       
     };
   },
   methods: {
 
-    // debounce(func, wait) {
+    debounce(func, wait) {
 
-    //   console.log(func)
-
-    //   let timer;
-    //   return function () {
-    //       console.log('ooi')
-    //       clearTimeout(timer);
-    //       console.log(timer)
-    //       timer = setTimeout(func, wait);
-    //       console.log(timer)
-    //   }
-    // },
+      let timer;
+          clearTimeout(timer);
+          timer = setTimeout(func, wait);
+    },
 
     handleKeyUp() {
       this.debounce(this.makeRequest,2000)
     },
 
-
-    debounce (fn, delay) {
-    
-    console.log('chamado')
-    var timeoutID = null
-    return function () {
-
-      console.log('hi')
-      clearTimeout(timeoutID)
-      var args = arguments
-      var that = this
-      timeoutID = setTimeout(function () {
-        fn.apply(that, args)
-      }, delay)
-    }
-  },
-
     makeRequest() {
-      
-      console.log('oi')
+
         const { url, client_id, client_secret, count, sort} = this.github;
 
           axios
             .get(`${url}/${this.search}?client_id=${client_id}&client_secret=${client_secret}`)
               .then(({data}) => this.user = data);
-              // console.log(this.search)
-
           axios
             .get(`${url}/${this.search}/repos?per_page=${count}&sort=${sort}&client_id=${client_id}
             &client_secret=${client_secret}`)
