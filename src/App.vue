@@ -49,19 +49,29 @@ export default {
     };
   },
   watch: {
-      search(newValue, oldValue) {
-        if(oldValue) {
+     search(newValue, oldValue) {
+        if(oldValue != newValue) {
           
           setTimeout(() => {
             this.handleKeyUp();
           },3000)
           
         
-        } else {
-          console.log('nop')
         }
       }
     },
+    
+    //   search(newValue, oldValue) {
+    //     if(oldValue) {
+          
+    //       setTimeout(() => {
+    //         this.handleKeyUp();
+    //       },3000)
+          
+        
+    //     }
+    //   }
+    // },
 
   methods: {
 
