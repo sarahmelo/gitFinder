@@ -50,14 +50,11 @@ export default {
   },
   watch: {
      search(newValue, oldValue) {
-        if(oldValue != newValue) {
           
-          setTimeout(() => {
+        setTimeout(() => {
             this.handleKeyUp();
-          },3000)
-          
+          },2000)
         
-        }
       }
     },
     
