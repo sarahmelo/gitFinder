@@ -106,6 +106,10 @@ export default {
 
 <style>
 
+* {
+  font-size: 18px
+}
+
 svg {
   margin-right: 4px;
 }
